@@ -29,25 +29,6 @@ contents: |-
             description: A UUID4.
         tags:
           - Generate UUID
-    /delay/{delay}:
-      get:
-        operationId: delay
-        description: Returns a delayed response
-        parameters:
-          - in: path
-            name: delay
-            required: true
-            schema:
-              type: integer
-              minimum: 0
-              maximum: 10
-            description: The delay in seconds
-        responses:
-          "200":
-            description: Returns a delayed response
-        summary: Returns a delayed response (max of 10 seconds).
-        tags:
-          - Delayed Response
   servers:
     - url: https://httpbin.org
 contentType: yaml
