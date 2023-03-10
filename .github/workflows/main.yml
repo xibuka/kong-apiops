@@ -33,4 +33,7 @@ jobs:
         run: inso generate config uuidgen.yaml -o ./kong-new.yaml --tags gitops --ci
       - name: debug
         run: cat ./kong-new.yaml 
-      
+      - name: Apply new configuration
+        run: deck sync --headers Kong-Admin-Token:kong --workspace default -s kong-new.yaml --tls-skip-verify
+        env:
+            DECK_KONG_ADDR: ${{ secrets.ADMIN_API_URL }}
