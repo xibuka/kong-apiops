@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1678433370727
+modified: 1678451875991
 created: 1664167223027
 fileName: UUIDgenerator
 contents: |-
@@ -29,25 +29,10 @@ contents: |-
             description: A UUID4.
         tags:
           - Generate UUID
-    /delay/{delay}:
-      get:
-        operationId: delay
-        description: Returns a delayed response
-        parameters:
-          - in: path
-            name: delay
-            required: true
-            schema:
-              type: integer
-              minimum: 0
-              maximum: 10
-            description: The delay in seconds
-        responses:
-          "200":
-            description: Returns a delayed response
-        summary: Returns a delayed response (max of 10 seconds).
-        tags:
-          - Delayed Response
+  x-kong-plugin-rate-limiting:
+    enabled: true
+    config:
+      minute: 5
   servers:
     - url: https://httpbin.org
 contentType: yaml
