@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1678452143938
+modified: 1679274771077
 created: 1664167223027
 fileName: UUIDgen
 contents: |-
@@ -16,7 +16,7 @@ contents: |-
       email: wenhan.shi@konghq.com
       url: https://konghq.com/
     description: A simple service returning a UUID based on https://httpbin.org
-    title: UUID generator based on httpbin.org
+    title: UUIDgen
     version: 1.0.3
   paths:
     /uuid:
@@ -34,5 +34,6 @@ contents: |-
         config:
           minute: 5
   servers:
-    - url: https://httpbin.org
+     - url: echo
+  #  - url: https://httpbin.org
 contentType: yaml
