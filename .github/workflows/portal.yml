@@ -43,4 +43,4 @@ jobs:
         run: |
           cp uuidgen.yaml kong-portal/workspaces/default/specs/ 
           cd kong-portal/
-          portal deploy defaul
+          portal deploy default
