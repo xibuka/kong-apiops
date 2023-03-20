@@ -43,4 +43,4 @@ jobs:
         run: |
           cp uuidgen.yaml kong-portal/workspaces/default/specs/ 
           cd kong-portal/
-          KONG_ADMIN_URL=http://13.112.75.20:8001 portal deploy default
+          KONG_ADMIN_URL=http://13.112.75.208:8001 portal deploy default
