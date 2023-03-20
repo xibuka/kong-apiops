@@ -23,8 +23,11 @@ jobs:
       - name: Install portal
         run: |
           npm install -g kong-portal-cli
+      - name: config portal
+        run: |
           mkdir -p workspaces/default/
           echo "kong_admin_url: http://13.112.75.208:8001" > workspaces/default/cli.conf.yaml
+          cat workspaces/default/cli.conf.yaml
       - name: Install Insomnia
         run: |
           curl -sL https://github.com/Kong/insomnia/releases/download/lib%403.6.0/inso-linux-3.6.0.tar.xz -o inso.tar.xz
