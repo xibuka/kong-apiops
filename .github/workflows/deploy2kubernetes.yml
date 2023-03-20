@@ -49,5 +49,4 @@ jobs:
           sudo snap install kubectl --classic
           cp kubeconfig $KUBECONFIG
       - name: deploy Kong Gateway using helm
-        run: |
-        kubectl apply -f ./kong-k8s.yaml 
+        run: kubectl apply -f ./kong-k8s.yaml 
