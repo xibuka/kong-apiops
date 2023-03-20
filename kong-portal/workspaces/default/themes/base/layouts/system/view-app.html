@@ -1,0 +1,24 @@
+{% layout = "layouts/_app.html" %}
+
+{-content-}
+<div id="params" style="display: none">
+  <meta name="portal_app_auth" content="{{portal.app_auth}}" >
+  <meta name="documentation" content="{{page.body or ""}}" >
+  <meta name="doc_css_path" content="{{page.doc_css_path or ""}}" >
+</div>
+
+<div class="dashboard">
+  <div id="portal-dashboard" data-page="view-app"></div>
+</div>
+
+<style>
+.modal-footer {
+  padding: 15px 0 0 !important
+}
+
+.modal-footer button,
+.table-header button {
+  padding: 0 30px !important;
+}
+</style>
+{-content-}

@@ -1,0 +1,44 @@
+name: ToPortal
+
+on:
+  push:
+    branches: [ "portal" ]
+    paths-ignore:
+      - .gitignore
+      - README.md
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: "12"
+      - name: Install portal
+        run: |
+          npm install -g kong-portal-cli
+          mkdir -p workspaces/default/
+          echo "kong_admin_url: http://13.112.75.208:8001" > workspaces/default/cli.conf.yaml
+      - name: Install Insomnia
+        run: |
+          curl -sL https://github.com/Kong/insomnia/releases/download/lib%403.6.0/inso-linux-3.6.0.tar.xz -o inso.tar.xz
+          sudo tar -xf inso.tar.xz -C /tmp/
+          cp /tmp/inso /usr/local/bin/      
+      - name: Export API spec
+        run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
+      - name: check source code
+        run: inso lint spec
+      - name: run test suite
+        run: inso run test spc_869ca3 --env env_6e24f55242
+      - name: deploy to Kong Developer portal
+        run: |
+          cp uuidgen.yaml kong-portal/workspaces/default/specs/ 
+          cd kong-portal/
+          portal config default
+          portal deploy default

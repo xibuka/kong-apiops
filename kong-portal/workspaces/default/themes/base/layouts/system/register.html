@@ -1,0 +1,39 @@
+{% layout = "layouts/_page.html" %}
+
+{-content-}
+  <div class="auth-page">
+    <section class="left-pane">
+      <div class="inner">
+        <p class="title">{* l("register_form_header", "Register") *}</p>
+        <p>{* l("register_form_content", "Enter your information below to create an account.") *}</p>
+
+        {% if portal.auth == 'basic-auth' then %}
+          {(partials/auth/forms/register/basic-auth.html, context)}
+        {% end %}
+
+        {% if portal.auth == 'key-auth' then %}
+          {(partials/auth/forms/register/key-auth.html, context)}
+        {% end %}
+
+        {% if portal.auth == 'openid-connect' then %}
+          {(partials/auth/forms/register/oidc.html, context)}
+        {% end %}
+
+        <p>
+          {* l("register_login_text", "Already have an account?") *}
+          <a href="login">{* l("register_login_link_text", "Login here") *}</a>.
+        </p>
+
+        <p><a href="">{* l("register_home_link_text", "← Go back home") *}</a></p>
+      </div>
+    </section>
+
+    <section class="right-pane">
+      <div class="inner">
+        <img alt="authorization hero placeholder" src="assets/images/auth-placeholder.svg" />
+        <h1>{* l("register_side_header", "") *}</h1>
+        <p>{* l("register_side_content", "") *}</p>
+      </div>
+    </section>
+  </div>
+{-content-}
