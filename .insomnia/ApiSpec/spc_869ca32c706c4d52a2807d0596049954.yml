@@ -1,39 +1,36 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1679274771077
+modified: 1679275054739
 created: 1664167223027
 fileName: UUIDgen
 contents: |-
   openapi: 3.0.0
   tags:
-    - description: Creates a random UUDI and returns it in a JSON structure
-      name: Generate UUID
-    - description: Returns a delayed response (max of 10 seconds).
-      name: Delayed Response
+    - description: echo service
+      name: echo service
   info:
     contact:
       email: wenhan.shi@konghq.com
       url: https://konghq.com/
-    description: A simple service returning a UUID based on https://httpbin.org
-    title: UUIDgen
-    version: 1.0.3
+    description: A simple service returning response
+    title: echo
+    version: 1.0.0
   paths:
-    /uuid:
+    /:
       get:
-        operationId: uuid
-        summary: Return a UUID.
-        description: Return a UUID
+        operationId: echo
+        summary: returning response
+        description: returning response
         responses:
           "200":
-            description: A UUID4.
+            description: A request.
         tags:
-          - Generate UUID
+          - echo service
       x-kong-plugin-rate-limiting:
         enabled: true
         config:
           minute: 5
   servers:
-     - url: echo
-  #  - url: https://httpbin.org
+     - url: echo-0
 contentType: yaml
