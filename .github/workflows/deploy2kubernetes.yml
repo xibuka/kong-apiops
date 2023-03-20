@@ -1,0 +1,53 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "DeployTok8s" ]
+    paths-ignore:
+      - .gitignore
+      - README.md
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+env:
+  KUBECONFIG: /tmp/config
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: "12"
+      - name: Install DecK
+        run: |
+          curl -sL https://github.com/kong/deck/releases/download/v1.15.1/deck_1.15.1_linux_amd64.tar.gz -o deck.tar.gz
+          tar -xf deck.tar.gz -C /tmp
+          cp /tmp/deck /usr/local/bin/
+      - name: Install Insomnia
+        run: |
+          curl -sL https://github.com/Kong/insomnia/releases/download/lib%403.6.0/inso-linux-3.6.0.tar.xz -o inso.tar.xz
+          sudo tar -xf inso.tar.xz -C /tmp/
+          cp /tmp/inso /usr/local/bin/      
+      - name: Export API spec
+        run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
+      - name: check source code
+        run: inso lint spec
+      - name: run test suite
+        run: inso run test spc_869ca3 --env env_6e24f55242
+      - name: Generate new gateway configuration
+        run: inso generate config uuidgen.yaml --type kubernetes -o ./kong-k8s.yaml --tags gitops --ci
+      - name: debug
+        run: cat ./kong-k8s.yaml 
+      - name: Install kubectl, helm and setup config file
+        run: |
+          sudo snap install kubectl --classic
+          cp kubeconfig $KUBECONFIG
+      - name: deploy Kong Gateway using helm
+        run: |
+        kubectl apply -f ./kong-k8s.yaml 
