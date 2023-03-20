@@ -1,14 +1,18 @@
-name: ToGateway
+name: Tok8s
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "DeployTok8s" ]
     paths-ignore:
       - .gitignore
       - README.md
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+
+env:
+  KUBECONFIG: /tmp/config
 
 jobs:
   build:
@@ -37,12 +41,12 @@ jobs:
       - name: run test suite
         run: inso run test spc_869ca3 --env env_6e24f55242
       - name: Generate new gateway configuration
-        run: inso generate config uuidgen.yaml -o ./kong-new.yaml --tags gitops --ci
+        run: inso generate config uuidgen.yaml --type kubernetes -o ./kong-k8s.yaml --tags gitops --ci
       - name: debug
-        run: cat ./kong-new.yaml 
-      - name: Convert Config
-        run: deck convert --input-file ./kong-new.yaml --from kong-gateway-2.x --to kong-gateway-3.x --output-file kong-new-3.0.yaml
-      - name: Apply new configuration
-        run: deck sync --headers Kong-Admin-Token:kong --workspace default -s kong-new-3.0.yaml --tls-skip-verify
-        env:
-            DECK_KONG_ADDR: ${{ secrets.ADMIN_API_URL }}
+        run: cat ./kong-k8s.yaml 
+      - name: Install kubectl, helm and setup config file
+        run: |
+          sudo snap install kubectl --classic
+          cp kubeconfig $KUBECONFIG
+      - name: deploy Kong Gateway using helm
+        run: kubectl apply -f ./kong-k8s.yaml 
