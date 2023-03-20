@@ -3,6 +3,9 @@ name: CI
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - .gitignore
+      - README.md
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,6 +32,10 @@ jobs:
           cp /tmp/inso /usr/local/bin/      
       - name: Export API spec
         run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
+      - name: check source code
+        run: inso lint spec
+      - name: run test suite
+        run: inso run test spc_869ca3 --env env_6e24f55242
       - name: Generate new gateway configuration
         run: inso generate config uuidgen.yaml -o ./kong-new.yaml --tags gitops --ci
       - name: debug
