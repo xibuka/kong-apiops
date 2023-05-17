@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1684285561889
+modified: 1684305688553
 created: 1664167223027
 fileName: UUIDgen
 contents: |-
@@ -17,7 +17,7 @@ contents: |-
       url: https://konghq.com/
     description: A simple service returning a UUID based on https://httpbin.org
     title: UUID generator based on httpbin.org
-    version: 1.0.0
+    version: 1.0.1
   paths:
     /uuid:
       get:
@@ -29,14 +29,6 @@ contents: |-
             description: A UUID4.
         tags:
           - Generate UUID
-      x-kong-plugin-rate-limiting:
-        enabled: true
-        config:
-          minute: 5
-      x-kong-plugin-proxy-cache:
-        enabled: true
-        config:
-          strategy: memory
   servers:
     - url: https://httpbin.org
 contentType: yaml
