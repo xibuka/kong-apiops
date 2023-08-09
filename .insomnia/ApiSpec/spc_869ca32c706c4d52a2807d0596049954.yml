@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1691458723510
+modified: 1691541898342
 created: 1664167223027
 fileName: UUIDgen
 contents: |-
@@ -11,6 +11,8 @@ contents: |-
       name: Generate UUID
     - description: Returns a delayed response (max of 10 seconds).
       name: Delayed Response
+    - description: returns a xml payload
+      name: get xml
   info:
     contact:
       email: wenhan.shi@konghq.com
@@ -29,6 +31,16 @@ contents: |-
             description: A UUID4.
         tags:
           - Generate UUID
+    /xml:
+      get:
+        operationId: xml
+        summary: Return a xml.
+        description: Return a xml example
+        responses:
+          "200":
+            description: A xml.
+        tags:
+          - get xml
   servers:
     - url: https://httpbin.apim.eu
 contentType: yaml
