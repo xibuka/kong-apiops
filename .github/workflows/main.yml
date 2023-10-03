@@ -43,7 +43,7 @@ jobs:
       - name: Convert Config
         run: deck convert --input-file ./kong-new.yaml --from kong-gateway-2.x --to kong-gateway-3.x --output-file kong-new-3.0.yaml
       - name: Apply new configuration
-        #run: deck sync --konnect-runtime-group-name se-wenhan-shi --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} -s kong-new-3.0.yaml
-        run: deck sync --headers Kong-Admin-Token:kong --workspace default -s kong-new-3.0.yaml --tls-skip-verify
-        env:
-            DECK_KONG_ADDR: ${{ secrets.ADMIN_API_URL }}
+        run: deck sync --konnect-runtime-group-name se-wenhan-shi --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} -s kong-new-3.0.yaml
+        #run: deck sync --headers Kong-Admin-Token:kong --workspace default -s kong-new-3.0.yaml --tls-skip-verify
+        #env:
+        #    DECK_KONG_ADDR: ${{ secrets.ADMIN_API_URL }}
