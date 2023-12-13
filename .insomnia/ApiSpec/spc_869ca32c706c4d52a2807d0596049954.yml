@@ -6,37 +6,49 @@ created: 1664167223027
 fileName: UUIDgen
 contents: |-
   openapi: 3.0.0
+  protocol: https
   tags:
     - description: Creates a random UUDI and returns it in a JSON structure
       name: Generate UUID
-    - description: Returns a delayed response (max of 10 seconds).
-      name: Delayed Response
+  layout: system/spec-renderer.html
   info:
     contact:
-      email: wenhan.shi@konghq.com
-      url: https://konghq.com/
-    description: A simple service returning a UUID based on https://httpbin.org
+      email: me@kennethreitz.org
+      responsibleDeveloper: Kenneth Reitz
+      responsibleOrganization: Kenneth Reitz
+      url: https://kennethreitz.org
+    description: >-
+      A simple service returning a UUID based on https://httpbin.orgå
+      Service is free - but think about giving an ice cream to the developer
+      ![Developer wants an ice cream](https://camo.githubusercontent.com/7454fb1622dd3589ddac9251455a601c6fd21800/  687474703a2f2f6661726d312e737461746963666c69636b722e636f6d2f3537322f33323531343636393638335f346461663261623762635f6b5f642e6a7067) 
     title: UUID generator based on httpbin.org
-    version: 1.0.8
+    version: 1.0.3
   paths:
     /uuid:
       get:
-        operationId: uuid
-        summary: Return a UUID.
-        description: Return a UUID
         responses:
           "200":
             description: A UUID4.
+        summary: Return a UUID4.
         tags:
           - Generate UUID
-      x-kong-plugin-rate-limiting:
-        enabled: true
-        config:
-          minute: 5
-      x-kong-plugin-proxy-cache:
-        enabled: true
-        config:
-          strategy: memory
+    /delay/{delay}:
+      get:
+        parameters:
+          - in: path
+            name: delay
+            required: true
+            schema:
+              type: integer
+              minimum: 0
+              maximum: 10
+            description: The delay in seconds
+        responses:
+          "200":
+            description: Returns a delayed response
+        summary: Returns a delayed response (max of 10 seconds).
+        tags:
+          - Delayed Response
   servers:
-    - url: https://httpbin.apim.eu
+    - url: https://httpbin.org/
 contentType: yaml
