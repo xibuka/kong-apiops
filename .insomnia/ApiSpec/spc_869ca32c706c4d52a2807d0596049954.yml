@@ -24,7 +24,7 @@ contents: |-
     title: UUID generator based on httpbin.org
     version: 1.0.4
   paths:
-    /uuid:
+    /uuid_new:
       get:
         responses:
           "200":
