@@ -22,7 +22,7 @@ contents: |-
       Service is free - but think about giving an ice cream to the developer
       ![Developer wants an ice cream](https://camo.githubusercontent.com/7454fb1622dd3589ddac9251455a601c6fd21800/  687474703a2f2f6661726d312e737461746963666c69636b722e636f6d2f3537322f33323531343636393638335f346461663261623762635f6b5f642e6a7067) 
     title: UUID generator based on httpbin.org
-    version: 1.0.3
+    version: 1.0.4
   paths:
     /uuid:
       get:
