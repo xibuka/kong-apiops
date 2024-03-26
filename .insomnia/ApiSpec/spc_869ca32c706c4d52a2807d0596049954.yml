@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1711427837711
+modified: 1711427975035
 created: 1664167223027
 fileName: UUIDgen
 contents: >-
@@ -44,7 +44,7 @@ contents: >-
       x-kong-plugin-mocking:
         enabled: true
         config: "
-          api_specification: openapi: 3.0.0
+          api_specification: 'openapi: 3.0.0
   info:
     title: OpenAPI 3.0 API
     description: This is a simple API
@@ -68,7 +68,7 @@ contents: >-
                     value:
                       id: 22222222222222222222
                       name: bar
-  "
+  '"
 
   servers:
     - url: https://httpbin.org
