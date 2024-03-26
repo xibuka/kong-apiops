@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1711428693147
+modified: 1711428920934
 created: 1664167223027
 fileName: UUIDgen
 contents: >-
@@ -21,7 +21,6 @@ contents: >-
     description: >-
       A simple service returning a UUID based on https://httpbin.org
       Service is free - but think about giving an ice cream to the developer
-      ![Developer wants an ice cream](https://camo.githubusercontent.com/7454fb1622dd3589ddac9251455a601c6fd21800/  687474703a2f2f6661726d312e737461746963666c69636b722e636f6d2f3537322f33323531343636393638335f346461663261623762635f6b5f642e6a7067) 
     title: UUID generator based on httpbin.org
     version: 1.0.4
   paths:
@@ -44,7 +43,7 @@ contents: >-
       x-kong-plugin-mocking:
         enabled: true
         config: 
-          api_specification: '{ "openapi": "3.0.0", "info": { "title": "Mocking uuid", "description": "Mocking uuid test", "contact": { "email": "example@example.com" }, "version": "1.0.0" }, "paths": { "/uuid": { "get": { "responses": { "200": { "description": "An uuid.", "content": { "application/json": { "examples": { "foo": { "value": { "id": 11111111111111110000, "name": "foo" } } } } } }, "201": { "description": "An uuid.", "content": { "application/json": { "examples": { "bar": { "value": { "id": 22222222222222220000, "name": "bar" } } } } } } } } } } }'
+          api_specification: '{"openapi":"3.0.0","info":{"title":"Mocking uuid","description":"Mocking uuid test","contact":{"email":"example@example.com"},"version":"1.0.0"},"paths":{"\/uuid":{"get":{"responses":{"200":{"description":"An uuid.","content":{"application\/json":{"examples":{"foo":{"value":{"uuid":"12345678901234567890","name":"foo"}}}}}}}}}}}'
   servers:
     - url: https://httpbin.org
 contentType: yaml
