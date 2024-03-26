@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1711424264605
+modified: 1711424560508
 created: 1664167223027
 fileName: UUIDgen
 contents: >-
@@ -17,8 +17,6 @@ contents: >-
   info:
     contact:
       email: me@kennethreitz.org
-      responsibleDeveloper: Kenneth Reitz
-      responsibleOrganization: Kenneth Reitz
       url: https://kennethreitz.org
     description: >-
       A simple service returning a UUID based on https://httpbin.org
@@ -48,8 +46,8 @@ contents: >-
         config:
           api_specification: '{openapi: 3.0.1
   info:
-    title: OpenAPI 3.0 API
-    description: This is a simple API
+    title: Mocking uuid
+    description: Mocking uuid test
     contact:
       email: example@example.com
     version: 1.0.0
