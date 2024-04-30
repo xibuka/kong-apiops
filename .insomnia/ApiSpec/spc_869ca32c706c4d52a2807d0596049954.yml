@@ -1,19 +1,16 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1711428920934
+modified: 1714445613476
 created: 1664167223027
 fileName: UUIDgen
-contents: >-
+contents: |-
   openapi: 3.0.0
-
   protocol: https
-
   tags:
     - description: Creates a random UUDI and returns it in a JSON structure
       name: Generate UUID
   layout: system/spec-renderer.html
-
   info:
     contact:
       email: me@kennethreitz.org
@@ -22,7 +19,7 @@ contents: >-
       A simple service returning a UUID based on https://httpbin.org
       Service is free - but think about giving an ice cream to the developer
     title: UUID generator based on httpbin.org
-    version: 1.0.4
+    version: 1.0.5
   paths:
     /uuid:
       get:
@@ -40,10 +37,6 @@ contents: >-
         enabled: true
         config:
           strategy: memory
-      x-kong-plugin-mocking:
-        enabled: true
-        config: 
-          api_specification: '{"openapi":"3.0.0","info":{"title":"Mocking uuid","description":"Mocking uuid test","contact":{"email":"example@example.com"},"version":"1.0.0"},"paths":{"\/uuid":{"get":{"responses":{"200":{"description":"An uuid.","content":{"application\/json":{"examples":{"foo":{"value":{"uuid":"12345678901234567890","name":"foo"}}}}}}}}}}}'
   servers:
     - url: https://httpbin.org
 contentType: yaml
