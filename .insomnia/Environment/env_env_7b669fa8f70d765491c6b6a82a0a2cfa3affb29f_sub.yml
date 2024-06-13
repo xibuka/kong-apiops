@@ -1,14 +1,14 @@
 _id: env_env_7b669fa8f70d765491c6b6a82a0a2cfa3affb29f_sub
 type: Environment
 parentId: env_7b669fa8f70d765491c6b6a82a0a2cfa3affb29f
-modified: 1711424408427
+modified: 1718262957776
 created: 1664167217936
 name: OpenAPI env
 data:
   scheme: http
-  base_path: ""
-  host: 18.178.66.113
-  port: "8000"
+  base_path: /
+  host: httpbin.org
+  port: "80"
   delay: 1
 dataPropertyOrder:
   "&":

@@ -1,7 +1,7 @@
 _id: spc_869ca32c706c4d52a2807d0596049954
 type: ApiSpec
 parentId: wrk_1455603093a14617997e360fcd9e17b4
-modified: 1718208065015
+modified: 1718263122971
 created: 1664167223027
 fileName: UUIDgen
 contents: |-
@@ -19,7 +19,7 @@ contents: |-
       A simple service returning a UUID based on https://httpbin.org
       Service is free - but think about giving an ice cream to the developer
     title: UUID generator based on httpbin.org
-    version: 1.0.5
+    version: 1.0.8
   paths:
     /uuid:
       get:
