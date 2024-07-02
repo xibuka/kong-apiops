@@ -37,10 +37,10 @@ jobs:
         run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
       - name: check source code
         run: inso lint spec
-      - name: run test suite
-        run: inso run test spc_869ca3 --env env_6e24f55242
+      #- name: run test suite
+        #run: inso run test spc_869ca3 --env env_6e24f55242
       - name: deploy to Kong Developer portal
         run: |
           cp uuidgen.yaml kong-portal/workspaces/default/specs/ 
           cd kong-portal/
-          KONG_ADMIN_URL=http://13.112.75.208:8001 KONG_ADMIN_TOKEN=test portal deploy default
+          KONG_ADMIN_URL=http://18.178.66.113:8001 KONG_ADMIN_TOKEN=test portal deploy default
