@@ -11,8 +11,11 @@ body: {}
 parameters: []
 headers: []
 authentication: {}
+preRequestScript: null
 metaSortKey: -1677139347965
 isPrivate: false
+pathParameters: null
+afterResponseScript: null
 settingStoreCookies: true
 settingSendCookies: true
 settingDisableRenderRequestBody: false

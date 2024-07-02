@@ -8,3 +8,7 @@ description: Creates a random UUDI and returns it in a JSON structure
 environment: {}
 environmentPropertyOrder: null
 metaSortKey: -1664167217934
+preRequestScript: null
+afterResponseScript: null
+authentication: null
+headers: null
