@@ -8,15 +8,16 @@ name: New Request
 description: ""
 method: GET
 body: {}
-preRequestScript: ""
 parameters: []
 headers:
   - name: User-Agent
     value: insomnia/9.2.0
 authentication: {}
+preRequestScript: ""
 metaSortKey: -1718263017891
 isPrivate: false
 pathParameters: []
+afterResponseScript: null
 settingStoreCookies: true
 settingSendCookies: true
 settingDisableRenderRequestBody: false
