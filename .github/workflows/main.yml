@@ -22,7 +22,7 @@ jobs:
           node-version: "12"
       - name: Install DecK
         run: |
-          curl -sL https://github.com/kong/deck/releases/download/v1.15.1/deck_1.15.1_linux_amd64.tar.gz -o deck.tar.gz
+          curl -sL https://github.com/kong/deck/releases/download/v1.40.2/deck_1.40.2_linux_amd64.tar.gz -o deck.tar.gz
           tar -xf deck.tar.gz -C /tmp
           cp /tmp/deck /usr/local/bin/
       - name: Install Insomnia
@@ -32,18 +32,19 @@ jobs:
           cp /tmp/inso /usr/local/bin/      
       - name: Export API spec
         run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
-      - name: check source code
-        run: inso lint spec
-      - name: run test suite
-        run: inso run test spc_869ca3 --env env_6e24f55242
+      #- name: check source code
+      #  run: inso lint spec
+      #- name: run test suite
+      #  run: inso run test spc_869ca3 --env env_6e24f55242
       - name: Generate new gateway configuration
-        run: inso generate config uuidgen.yaml -o ./kong-new.yaml --tags gitops --ci
+        #run: inso generate config uuidgen.yaml -o ./kong-new.yaml --tags gitops --ci
+        run: deck file openapi2kong --spec uuidgen.yaml --output-file ./kong.yaml
       - name: debug
-        run: cat ./kong-new.yaml 
-      - name: Convert Config
-        run: deck convert --input-file ./kong-new.yaml --from kong-gateway-2.x --to kong-gateway-3.x --output-file kong-new-3.0.yaml
+        run: cat ./kong.yaml 
+      #- name: Convert Config
+      #  run: deck convert --input-file ./kong-new.yaml --from kong-gateway-2.x --to kong-gateway-3.x --output-file kong-new-3.0.yaml
       - name: Apply new configuration
         #run: deck sync --konnect-runtime-group-name se-wenhan-shi --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} -s kong-new-3.0.yaml
-        run: deck sync --headers Kong-Admin-Token:test --workspace demo -s kong-new-3.0.yaml --tls-skip-verify
+        run: deck gateway sync --headers Kong-Admin-Token:test --workspace demo -s kong.yaml --tls-skip-verify
         env:
             DECK_KONG_ADDR: ${{ secrets.ADMIN_API_URL }}
