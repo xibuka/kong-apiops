@@ -1,10 +1,10 @@
-_id: req_wrk_1455603093a14617997e360fcd9e17b4ab464f02
+_id: req_407559039b4d4b3b8b368a8670482422
 type: Request
-parentId: fld_wrk_1455603093a14617997e360fcd9e17b4799a010a
-modified: 1729525121150
-created: 1677139347963
-url: "{{ base_url }}/delay/{{ delay }}"
-name: Returns a delayed response
+parentId: fld_9bb937a2e1cd42e581591877d49ced59
+modified: 1739166934257
+created: 1739166934257
+url: "{{ _.base_url }}/uuid"
+name: Return a UUID4.
 description: ""
 method: GET
 body: {}
@@ -12,7 +12,7 @@ parameters: []
 headers: []
 authentication: {}
 preRequestScript: null
-metaSortKey: -1677139347963
+metaSortKey: -1739166934257
 isPrivate: false
 pathParameters: null
 afterResponseScript: null
