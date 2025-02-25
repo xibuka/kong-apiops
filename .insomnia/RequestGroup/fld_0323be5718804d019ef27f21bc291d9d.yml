@@ -1,0 +1,14 @@
+_id: fld_0323be5718804d019ef27f21bc291d9d
+type: RequestGroup
+parentId: wrk_7debf795e2ee40a2b61b5bd1016db0c8
+modified: 1739330283316
+created: 1739330283316
+name: Utility
+description: Utility endpoints providing unique identifiers and other tools.
+environment: {}
+environmentPropertyOrder: null
+metaSortKey: -1739330283317
+preRequestScript: null
+afterResponseScript: null
+authentication: null
+headers: null

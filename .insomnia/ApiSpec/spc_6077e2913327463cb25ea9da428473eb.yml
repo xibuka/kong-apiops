@@ -1,0 +1,88 @@
+_id: spc_6077e2913327463cb25ea9da428473eb
+type: ApiSpec
+parentId: wrk_7debf795e2ee40a2b61b5bd1016db0c8
+modified: 1739406184043
+created: 1739330183130
+fileName: my-spec.yaml
+contents: >
+  openapi: 3.0.0
+
+  info:
+    title: HTTPBin API
+    description: OpenAPI specification for selected httpbin.org endpoints
+    version: 1.0.0
+    contact:
+      name: Support
+      url: https://httpbin.org
+      email: support@httpbin.org
+  servers:
+    - url: https://httpbin.org
+    - url: https://mock-620a4a593d564dd2ae59bc01131f2291.mock.insomnia.rest
+  tags:
+    - name: Utility
+      description: Utility endpoints providing unique identifiers and other tools.
+    - name: Response Format
+      description: Endpoints returning different response formats.
+  paths:
+    /uuid:
+      get:
+        summary: Get a random UUID
+        description: Returns a randomly generated UUID in JSON format.
+        operationId: getUuid
+        tags:
+          - Utility
+        responses:
+          "200":
+            description: A random UUID
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      format: uuid
+    /json:
+      get:
+        summary: Get a JSON response
+        description: Returns a predefined JSON response containing a slideshow object.
+        operationId: getJson
+        tags:
+          - Response Format
+        responses:
+          "200":
+            description: A sample JSON response
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    slideshow:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        slides:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              title:
+                                type: string
+                              type:
+                                type: string
+    /xml:
+      get:
+        summary: Get an XML response
+        description: Returns a predefined XML response.
+        operationId: getXml
+        tags:
+          - Response Format
+        responses:
+          "200":
+            description: A sample XML response
+            content:
+              application/xml:
+                schema:
+                  type: string
+contentType: yaml

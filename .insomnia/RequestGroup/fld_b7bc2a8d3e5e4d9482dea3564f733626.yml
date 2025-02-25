@@ -1,0 +1,14 @@
+_id: fld_b7bc2a8d3e5e4d9482dea3564f733626
+type: RequestGroup
+parentId: wrk_7debf795e2ee40a2b61b5bd1016db0c8
+modified: 1739330283317
+created: 1739330283317
+name: Response Format
+description: Endpoints returning different response formats.
+environment: {}
+environmentPropertyOrder: null
+metaSortKey: -1739330283317
+preRequestScript: null
+afterResponseScript: null
+authentication: null
+headers: null

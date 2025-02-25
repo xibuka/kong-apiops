@@ -1,0 +1,24 @@
+_id: req_7577777c3d62491ab7812d1946a172b0
+type: Request
+parentId: fld_0323be5718804d019ef27f21bc291d9d
+modified: 1739330283318
+created: 1739330283318
+url: "{{ _.base_url }}/uuid"
+name: Get a random UUID
+description: Returns a randomly generated UUID in JSON format.
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+preRequestScript: null
+metaSortKey: -1739330283318
+isPrivate: false
+pathParameters: null
+afterResponseScript: null
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

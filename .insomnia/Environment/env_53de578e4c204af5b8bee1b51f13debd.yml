@@ -1,0 +1,18 @@
+_id: env_53de578e4c204af5b8bee1b51f13debd
+type: Environment
+parentId: env_beea2e13c1b3a7611e805b0a8abaac60cd8a76e9
+modified: 1739331130272
+created: 1739331024879
+name: wenhan mocking
+data:
+  scheme: https
+  base_path: ""
+  host: mock-620a4a593d564dd2ae59bc01131f2291.mock.insomnia.rest
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
+color: null
+isPrivate: false
+metaSortKey: 1739330283365
