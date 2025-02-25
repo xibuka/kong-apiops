@@ -16,6 +16,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: "12"
       - name: Setup deck
         uses: kong/setup-deck@v1
       - name: Setup inso
