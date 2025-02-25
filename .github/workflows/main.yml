@@ -35,8 +35,10 @@ jobs:
         run: inso -w $GITHUB_WORKSPACE export spec spc -o uuidgen.yaml --ci
       - name: convert OAS to Kong gateway configuration
         run: deck file openapi2kong --spec uuidgen.yaml --output-file ./kong.yaml
+      - name: check connection to Kong
+        run: deck gateway ping ${{ secrets.KONNECT_PERSONAL_TOKEN }}
       - name: Apply new configuration
-        #run: deck sync --konnect-runtime-group-name se-wenhan-shi --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} -s kong-new-3.0.yaml
-        run: deck gateway sync --headers Kong-Admin-Token:test --workspace demo kong.yaml --tls-skip-verify
+        run: deck gateway sync --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} kong.yaml
+        #run: deck gateway sync --headers Kong-Admin-Token:test --workspace demo kong.yaml --tls-skip-verify
         env:
             DECK_KONG_ADDR: ${{ secrets.ADMIN_API_URL }}
