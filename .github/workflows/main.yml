@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
     paths-ignore:
       - .gitignore
+      - .github
       - README.md
  
   # Allows you to run this workflow manually from the Actions tab
