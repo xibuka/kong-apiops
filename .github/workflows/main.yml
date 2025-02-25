@@ -16,33 +16,18 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: "12"
-      - name: Install DecK
-        run: |
-          curl -sL https://github.com/kong/deck/releases/download/v1.40.2/deck_1.40.2_linux_amd64.tar.gz -o deck.tar.gz
-          tar -xf deck.tar.gz -C /tmp
-          cp /tmp/deck /usr/local/bin/
-      - name: Install Insomnia
-        run: |
-          curl -sL https://github.com/Kong/insomnia/releases/download/lib%403.6.0/inso-linux-3.6.0.tar.xz -o inso.tar.xz
-          sudo tar -xf inso.tar.xz -C /tmp/
-          cp /tmp/inso /usr/local/bin/      
+      - name: Setup deck
+        uses: kong/setup-deck@v1
+      - name: Setup inso
+        uses: kong/setup-inso@v1 
       - name: Export API spec
         run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
       #- name: check source code
       #  run: inso lint spec
       #- name: run test suite
       #  run: inso run test spc_869ca3 --env env_6e24f55242
-      - name: Generate new gateway configuration
-        #run: inso generate config uuidgen.yaml -o ./kong-new.yaml --tags gitops --ci
+      - name: convert OAS to Kong gateway configuration
         run: deck file openapi2kong --spec uuidgen.yaml --output-file ./kong.yaml
-      - name: debug
-        run: cat ./kong.yaml 
-      #- name: Convert Config
-      #  run: deck convert --input-file ./kong-new.yaml --from kong-gateway-2.x --to kong-gateway-3.x --output-file kong-new-3.0.yaml
       - name: Apply new configuration
         #run: deck sync --konnect-runtime-group-name se-wenhan-shi --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} -s kong-new-3.0.yaml
         run: deck gateway sync --headers Kong-Admin-Token:test --workspace demo kong.yaml --tls-skip-verify
