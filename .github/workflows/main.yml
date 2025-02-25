@@ -28,11 +28,11 @@ jobs:
         with:
           inso-version: 10.1.1
       - name: Export API spec
-        run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
-      #- name: check source code
-      #  run: inso lint spec
-      #- name: run test suite
-      #  run: inso run test spc_869ca3 --env env_6e24f55242
+        run: inso -w $GITHUB_WORKSPACE export spec spc -o uuidgen.yaml --ci
+      - name: check source code
+        run: inso lint spec my-spec.yaml
+      - name: run test suite
+        run: inso run test uts_1b98a4 --env env_929fbe
       - name: convert OAS to Kong gateway configuration
         run: deck file openapi2kong --spec uuidgen.yaml --output-file ./kong.yaml
       - name: Apply new configuration
