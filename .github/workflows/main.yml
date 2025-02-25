@@ -27,11 +27,10 @@ jobs:
         uses: kong/setup-inso@v1 
         with:
           inso-version: 10.1.1
-
-      #- name: check source code
-      #  run: inso lint spec my-spec.yaml
+      - name: check source code
+        run: inso -w $GITHUB_WORKSPACE lint spec my-spec.yaml
       - name: run test suite
-        run: inso run test uts_1b98a4 --env env_929fbe
+        run: inso -w $GITHUB_WORKSPACE run test uts_1b98a4 --env env_929fbe
       - name: Export API spec
         run: inso -w $GITHUB_WORKSPACE export spec spc -o uuidgen.yaml --ci
       - name: convert OAS to Kong gateway configuration
