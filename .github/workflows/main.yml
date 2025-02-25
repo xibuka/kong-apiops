@@ -39,6 +39,4 @@ jobs:
         run: deck gateway ping --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }}
       - name: Apply new configuration
         run: deck gateway sync --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} kong.yaml
-        #run: deck gateway sync --headers Kong-Admin-Token:test --workspace demo kong.yaml --tls-skip-verify
-        env:
-            DECK_KONG_ADDR: ${{ secrets.ADMIN_API_URL }}
+        #run: deck gateway sync --kong-addr ${{ secrets.ADMIN_API_URL }} --headers Kong-Admin-Token:test --workspace demo kong.yaml --tls-skip-verify 
