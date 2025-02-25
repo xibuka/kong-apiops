@@ -25,7 +25,7 @@ jobs:
       - name: Setup inso
         uses: kong/setup-inso@v1 
         with:
-          inso-version: v1.1.7
+          inso-version: 10.3.1
       - name: Export API spec
         run: inso -w $GITHUB_WORKSPACE export spec UUIDgen -o uuidgen.yaml --ci
       #- name: check source code
