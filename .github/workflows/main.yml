@@ -36,7 +36,7 @@ jobs:
       - name: convert OAS to Kong gateway configuration
         run: deck file openapi2kong --spec uuidgen.yaml --output-file ./kong.yaml
       - name: check connection to Kong
-        run: deck gateway ping ${{ secrets.KONNECT_PERSONAL_TOKEN }}
+        run: deck gateway ping --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }}
       - name: Apply new configuration
         run: deck gateway sync --konnect-token ${{ secrets.KONNECT_PERSONAL_TOKEN }} kong.yaml
         #run: deck gateway sync --headers Kong-Admin-Token:test --workspace demo kong.yaml --tls-skip-verify
