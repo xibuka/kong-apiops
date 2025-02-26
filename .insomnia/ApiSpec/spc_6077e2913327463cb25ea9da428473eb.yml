@@ -1,7 +1,7 @@
 _id: spc_6077e2913327463cb25ea9da428473eb
 type: ApiSpec
 parentId: wrk_7debf795e2ee40a2b61b5bd1016db0c8
-modified: 1740529782655
+modified: 1740529934266
 created: 1739330183130
 fileName: my-spec.yaml
 contents: >
@@ -17,7 +17,6 @@ contents: >
       email: support@httpbin.org
   servers:
     - url: https://httpbin.org
-    - url: https://mock-620a4a593d564dd2ae59bc01131f2291.mock.insomnia.rest
   tags:
     - name: Utility
       description: Utility endpoints providing unique identifiers and other tools.
