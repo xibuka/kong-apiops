@@ -1,7 +1,7 @@
 _id: spc_6077e2913327463cb25ea9da428473eb
 type: ApiSpec
 parentId: wrk_7debf795e2ee40a2b61b5bd1016db0c8
-modified: 1740496199817
+modified: 1740529782655
 created: 1739330183130
 fileName: my-spec.yaml
 contents: >
@@ -10,7 +10,7 @@ contents: >
   info:
     title: HTTPBin API
     description: OpenAPI specification for selected httpbin.org endpoints
-    version: 1.0.1
+    version: 1.0.2
     contact:
       name: Support
       url: https://httpbin.org
